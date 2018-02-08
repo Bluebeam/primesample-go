@@ -1,0 +1,34 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Session Roundtripper - Markup & Finish</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    </head>
+    <body style="margin: 25px;">
+        <div class="page-header">
+            <h1>Markup & Finish</h1>
+        </div>
+        <p>
+            The Studio Session <strong>{{.SessionName}}</strong> has been created with ID <strong>{{.SessionID}}</strong>. You may now go into Revu and markup your file. Click 'Finish Session' when you are ready.
+        </p>
+        <div class="panel">
+            <div class="panel-body">
+                <small class="text-muted">SESSION LINK</small>
+                <div class="well">
+                    <a href="https://studio.bluebeam.com/join.html?ID={{.SessionID}}" target="_blank">{{.SessionName}}</a>
+                </div>
+            </div>
+        </div>
+        <form action="/finish" method="POST">
+            <div class="form-group">
+                <input type="hidden" name="sessionId" value="{{.SessionID}}">
+                <input type="hidden" name="projectId" value="{{.ProjectID}}">
+                <input type="hidden" name="fileSessionId" value="{{.FileSessionID}}">
+                <input type="hidden" name="fileProjectId" value="{{.FileProjectID}}">
+                <input class="btn btn-primary" type="submit" value="Finish Session">
+            </div>
+        </form>
+    </body>
+</html>
